@@ -68,12 +68,12 @@
 			children = (
 				8BE9C8CB29638837009D2D56 /* Models */,
 				8BE9C8CA29638826009D2D56 /* ViewControllers */,
-				8BE9C8B9296380F2009D2D56 /* Assets.xcassets */,
 				8BE9C8C9296387E4009D2D56 /* Views */,
 				8BE9C8C429638132009D2D56 /* CommonUI */,
 				8BE9C8B0296380F1009D2D56 /* AppDelegate.swift */,
 				8BE9C8B2296380F1009D2D56 /* SceneDelegate.swift */,
 				8BE9C8BE296380F2009D2D56 /* Info.plist */,
+				8BE9C8B9296380F2009D2D56 /* Assets.xcassets */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";

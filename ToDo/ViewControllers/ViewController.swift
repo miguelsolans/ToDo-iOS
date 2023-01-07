@@ -8,17 +8,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-    // MARK: Data
+    // Data
     var items: [ItemModel] = [
         ItemModel(priority: .high, done: true, title: "Feed the pets"),
         ItemModel(priority: .medium, done: false, title: "Have lunch"),
         ItemModel(priority: .low, done: false, title: "Take a nap")
     ];
 
-    // MARK: Storyboard Outlets
+    // Storyboard Outlets
     @IBOutlet weak var tableView: UITableView!
     
-    // MARK: ViewController Lifecycles
+    // ViewController Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,12 +32,32 @@ class ViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = addButton;
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+        
+    }
+    
     
 }
 
-// MARK: TableView Delegate and DataSource Methods
-extension ViewController : UITableViewDelegate, UITableViewDataSource {
-    
+// MARK: Actions
+extension ViewController {
+    @objc func addTask() {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil);
+        let formViewController = storyboard.instantiateViewController(withIdentifier: "FormViewController") as! FormViewController;
+        
+        formViewController.delegate = self;
+        
+        self.present(formViewController, animated: true);
+    }
+}
+
+
+// MARK: - Delegate Extensions
+
+// MARK: - TableView DataSource
+extension ViewController : UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
@@ -45,8 +65,10 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         self.items.count;
     }
-    
-    
+}
+
+// MARK: TableView Delegate and DataSource Methods
+extension ViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as? ItemCell {
@@ -57,19 +79,6 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         }
         
         return UITableViewCell();
-    }
-}
-
-// MARK: - Actions
-extension ViewController {
-    @objc func addTask() {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil);
-        let formViewController = storyboard.instantiateViewController(withIdentifier: "FormViewController") as! FormViewController;
-        
-        formViewController.delegate = self;
-        
-        self.present(formViewController, animated: true);
     }
 }
 

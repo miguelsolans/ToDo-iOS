@@ -35,10 +35,7 @@ class FormViewController : UIViewController {
         
     }
     
-    
-    
     @IBAction func saveButtonTapped(_ sender: Any) {
-     
         
         guard let title = self.taskTitleTextField.text else { return }
         self.task.title = title;
@@ -56,9 +53,9 @@ class FormViewController : UIViewController {
 }
 
 
-extension FormViewController : UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    
+// MARK: - Delegate Methods
+// MARK: Picker View Data Source
+extension FormViewController : UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1;
     }
@@ -66,10 +63,14 @@ extension FormViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return self.priorities.count;
     }
-    
-    
+}
+
+// MARK: - Picker View Delegate
+extension FormViewController : UIPickerViewDelegate {
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return self.priorities[ row ].label;
     }
     
 }
+

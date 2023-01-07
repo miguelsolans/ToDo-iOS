@@ -1,2 +1,2 @@
 # ToDo-iOS
-Simple ToDo Application using CoreData 
+Simple ToDo Application using CoreData and UIKit
